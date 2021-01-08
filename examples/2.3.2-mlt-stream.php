@@ -3,7 +3,7 @@
 require_once(__DIR__.'/init.php');
 htmlHeader();
 
-echo "<h2>Note: The techproducts example doesn't include a /mlt handler anymore!</h2>";
+echo "<h2>Note: The tech_products example doesn't include a /mlt handler anymore!</h2>";
 
 // create a client instance
 $client = new Solarium\Client($adapter, $eventDispatcher, $config);

@@ -1,7 +1,7 @@
-diff --git a/solr/server/solr/configsets/sample_techproducts_configs/conf/solrconfig.xml b/solr/server/solr/configsets/sample_techproducts_configs/conf/solrconfig.xml
+diff --git a/solr/server/solr/configsets/sample_tech_products_configs/conf/solrconfig.xml b/solr/server/solr/configsets/sample_tech_products_configs/conf/solrconfig.xml
 index 59f5eb7b448..c9ffe37a4bb 100644
---- a/solr/server/solr/configsets/sample_techproducts_configs/conf/solrconfig.xml
-+++ b/solr/server/solr/configsets/sample_techproducts_configs/conf/solrconfig.xml
+--- a/solr/server/solr/configsets/sample_tech_products_configs/conf/solrconfig.xml
++++ b/solr/server/solr/configsets/sample_tech_products_configs/conf/solrconfig.xml
 @@ -86,6 +86,8 @@
    <lib dir="${solr.install.dir:../../../..}/contrib/velocity/lib" regex=".*\.jar" />
    <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-velocity-\d.*\.jar" />

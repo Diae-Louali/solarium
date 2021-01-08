@@ -1,11 +1,8 @@
-Getting started
-===============
+# Getting started
 
 In this part the installation of Solarium is covered and a quick-start with some simple queries. If you intend to read the rest of the manual you might skip the example queries, they will be covered in-depth in their own chapters.
 
-
-Installation
-============
+# Installation
 
 ### Requirements
 
@@ -27,9 +24,9 @@ See [<https://packagist.org>](https://packagist.org) for other packages.
 
 ```json
 {
-    "require": {
-        "solarium/solarium": "~6.0"
-    }
+  "require": {
+    "solarium/solarium": "~6.0"
+  }
 }
 ```
 
@@ -43,7 +40,7 @@ Also you need to make sure the the Symfony Event Dispatcher component is availab
 
 ### Checking the availability
 
-To check your installation you can do a Solarium version check with the following code. If everything works you should see the version of Solarium you downloaded. To test Solr communication you can use a ping query (you might need some configuration to get the ping working, more on that later) 
+To check your installation you can do a Solarium version check with the following code. If everything works you should see the version of Solarium you downloaded. To test Solr communication you can use a ping query (you might need some configuration to get the ping working, more on that later)
 
 ```php
 <?php
@@ -84,36 +81,36 @@ instead of `/solr` with this release!
 For the same reason it is a must to explicit configure the _core_ or _collection_.
 
 So an old setting like
+
 ```
 'path' => '/solr/xxxx/'
 ```
+
 has to be changed to something like
+
 ```
 'path' => '/',
 'collection' => 'xxxx',
 ```
 
-
 ### Available integrations
 
 Some users of Solarium have been nice enough to create easy ways of integrating Solarium:
 
--   A Solarium bundle for Symfony2 <https://github.com/nelmio/NelmioSolariumBundle>
--   Zend Framework 2 module <https://zfmodules.com/Ewgo/SolariumModule>
--   Lithium <https://github.com/joseym/li3_solr>
--   Fuel PHP <https://github.com/bgrimes/fuelphp-solarium>
--   Yii <https://github.com/estahn/YiiSolarium>
--   Drupal <https://www.drupal.org/project/search_api_solr>
--   Typo3 <https://extensions.typo3.org/extension/solr/>
--   Magento <https://github.com/jeroenvermeulen/magento-solarium>
--   Wordpress <https://github.com/pantheon-systems/solr-for-wordpress>
--   SilverStripe <https://github.com/firesphere/silverstripe-solr-search>
+- A Solarium bundle for Symfony2 <https://github.com/nelmio/NelmioSolariumBundle>
+- Zend Framework 2 module <https://zfmodules.com/Ewgo/SolariumModule>
+- Lithium <https://github.com/joseym/li3_solr>
+- Fuel PHP <https://github.com/bgrimes/fuelphp-solarium>
+- Yii <https://github.com/estahn/YiiSolarium>
+- Drupal <https://www.drupal.org/project/search_api_solr>
+- Typo3 <https://extensions.typo3.org/extension/solr/>
+- Magento <https://github.com/jeroenvermeulen/magento-solarium>
+- Wordpress <https://github.com/pantheon-systems/solr-for-wordpress>
+- SilverStripe <https://github.com/firesphere/silverstripe-solr-search>
 
 If you know of any other integrations please let it know!
 
-
-Basic usage
-===========
+# Basic usage
 
 All the code display below can be found in the /examples dir of the project, where you can also easily execute the code. For more info see [Example code](V3:Example_code "wikilink").
 
@@ -128,7 +125,7 @@ $adapter = new Solarium\Core\Client\Adapter\Curl(); // or any other adapter impl
 $eventDispatcher = new Symfony\Component\EventDispatcher\EventDispatcher();
 ```
 
-The `$config` array has the following contents: 
+The `$config` array has the following contents:
 
 ```php
 <?php
@@ -139,9 +136,9 @@ $config = array(
             'host' => '127.0.0.1',
             'port' => 8983,
             'path' => '/',
-            'core' => 'techproducts',
+            'core' => 'tech_products',
             // For Solr Cloud you need to provide a collection instead of core:
-            // 'collection' => 'techproducts',
+            // 'collection' => 'tech_products',
         )
     )
 );
@@ -149,7 +146,7 @@ $config = array(
 
 ### Selecting documents
 
-This is the basic example of executing a select query and displaying the results: 
+This is the basic example of executing a select query and displaying the results:
 
 ```php
 <?php
@@ -244,7 +241,7 @@ htmlFooter();
 
 ### Deleting documents
 
-Documents can be deleted with a query: 
+Documents can be deleted with a query:
 
 ```php
 <?php
@@ -273,7 +270,7 @@ htmlFooter();
 
 ```
 
-Or by id 
+Or by id
 
 ```php
 <?php
@@ -306,7 +303,7 @@ Also, a combination of both is possible. See the docs for more info.
 
 ### Adding documents
 
-This example adds some documents to the index: 
+This example adds some documents to the index:
 
 ```php
 <?php
@@ -349,12 +346,11 @@ htmlFooter();
 
 For all options (like boosting) see the docs.
 
-
-Example code
-============
+# Example code
 
 With Solarium a set of examples is available to demonstrate the usage and to test your Solr environment. But since the
 examples are not included in the distribution you need a git checkout of solarium and install the dependencies:
+
 ```
 git clone https://github.com/solariumphp/solarium.git
 cd solarium
@@ -363,6 +359,7 @@ composer install
 
 Afterwards you need to configure a web server to use the `examples` folder as docroot. But the easiest way is to use the
 built-in web server of PHP. To do so continue like this:
+
 ```
 cd examples
 php -S localhost:8888

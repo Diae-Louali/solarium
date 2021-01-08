@@ -28,7 +28,7 @@ use Solarium\QueryType\Select\Result\Document;
 use Solarium\QueryType\Update\Query\Query as UpdateQuery;
 use Solarium\Support\Utility;
 
-abstract class AbstractTechproductsTest extends TestCase
+abstract class Abstracttech_productsTest extends TestCase
 {
     /**
      * @var ClientInterface
@@ -50,13 +50,13 @@ abstract class AbstractTechproductsTest extends TestCase
      */
     protected static $solrVersion;
 
-    abstract protected static function createTechproducts(): void;
+    abstract protected static function createtech_products(): void;
 
     public static function setUpBeforeClass(): void
     {
         self::$name = uniqid();
 
-        static::createTechproducts();
+        static::createtech_products();
 
         $ping = self::$client->createPing();
         self::$client->ping($ping);
@@ -104,7 +104,7 @@ abstract class AbstractTechproductsTest extends TestCase
         ], $config['updateHandler']['autoSoftCommit']);
 
         try {
-            // index techproducts sample data
+            // index tech_products sample data
             $dataDir = __DIR__.
                 DIRECTORY_SEPARATOR.'..'.
                 DIRECTORY_SEPARATOR.'..'.
@@ -148,7 +148,7 @@ abstract class AbstractTechproductsTest extends TestCase
             ], $result->getIterator()->current()->getFields());
         } catch (\Exception $e) {
             self::tearDownAfterClass();
-            static::markTestSkipped('Solr techproducts sample data not indexed properly.');
+            static::markTestSkipped('Solr tech_products sample data not indexed properly.');
         }
     }
 
@@ -307,7 +307,7 @@ abstract class AbstractTechproductsTest extends TestCase
     public function testFacetHighlightSpellcheckComponent()
     {
         $select = self::$client->createSelect();
-        // In the techproducts example, the request handler "select" doesn't neither contain a spellcheck component nor
+        // In the tech_products example, the request handler "select" doesn't neither contain a spellcheck component nor
         // a highlighter or facets. But the "browse" request handler does.
         $select->setHandler('browse');
         // Search for misspelled "power cort".
@@ -386,7 +386,7 @@ abstract class AbstractTechproductsTest extends TestCase
 
         foreach ($result->getFacetSet() as $facetFieldName => $facetField) {
             $this->assertSame('stock', $facetFieldName);
-            // The power cord is not in stock! In the techproducts example that is reflected by the string 'false'.
+            // The power cord is not in stock! In the tech_products example that is reflected by the string 'false'.
             $this->assertSame(1, $facetField->getValues()['false']);
         }
     }
@@ -510,7 +510,7 @@ abstract class AbstractTechproductsTest extends TestCase
     public function testQueryElevation()
     {
         $select = self::$client->createSelect();
-        // In the techproducts example, the request handler "select" doesn't contain a query elevation component.
+        // In the tech_products example, the request handler "select" doesn't contain a query elevation component.
         // But the "elevate" request handler does.
         $select->setHandler('elevate');
         $select->setQuery('electronics');
@@ -522,7 +522,7 @@ abstract class AbstractTechproductsTest extends TestCase
         $elevate->setExcludeIds(['SP2514N', '6H500F0']);
 
         $result = self::$client->select($select);
-        // The techproducts example contains 14 'electronics', 2 of them are excluded.
+        // The tech_products example contains 14 'electronics', 2 of them are excluded.
         $this->assertSame(12, $result->getNumFound());
         // The first two results are elevated and ignore the sort order.
         $iterator = $result->getIterator();
@@ -582,7 +582,7 @@ abstract class AbstractTechproductsTest extends TestCase
     public function testSuggester()
     {
         $suggester = self::$client->createSuggester();
-        // The techproducts example doesn't provide a default suggester, but 'mySuggester'.
+        // The tech_products example doesn't provide a default suggester, but 'mySuggester'.
         $suggester->setDictionary('mySuggester');
         $suggester->setQuery('electronics');
         // A suggester dictionary needs to build first, but not on every request!
@@ -1900,7 +1900,7 @@ abstract class AbstractTechproductsTest extends TestCase
         $this->assertTrue($prefetch->valid());
         // check that we're at position 0
         $this->assertSame(0, $prefetch->key());
-        // current document is the one with lowest alphabetical id in techproducts
+        // current document is the one with lowest alphabetical id in tech_products
         $this->assertSame('0579B002', $prefetch->current()->id);
 
         // move to an arbitrary point past the first set of fetched documents
@@ -1921,7 +1921,7 @@ abstract class AbstractTechproductsTest extends TestCase
         $this->assertTrue($prefetch->valid());
         // check that we're back at position 0
         $this->assertSame(0, $prefetch->key());
-        // current document is once again the one with lowest alphabetical id in techproducts
+        // current document is once again the one with lowest alphabetical id in tech_products
         $this->assertSame('0579B002', $prefetch->current()->id);
     }
 
@@ -2074,7 +2074,7 @@ abstract class AbstractTechproductsTest extends TestCase
 
         $query->setFile(__DIR__.DIRECTORY_SEPARATOR.'Fixtures'.DIRECTORY_SEPARATOR.'test gb18030 这份文件是很有光泽.txt');
 
-        // the file contains a GB18030 example from the techproducts sample set
+        // the file contains a GB18030 example from the tech_products sample set
         $sampleGB18030 = '这份文件是很有光泽';
 
         $response = self::$client->extract($query);

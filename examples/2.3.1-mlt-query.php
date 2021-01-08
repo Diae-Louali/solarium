@@ -10,7 +10,7 @@ $client = new Client($adapter, $eventDispatcher, $config);
 
 // get a morelikethis query instance
 $query = $client->createSelect()
-    // Unfortunately the /mlt handler of the techproducts examlpe doesn't exist anymore.
+    // Unfortunately the /mlt handler of the tech_products examlpe doesn't exist anymore.
     // Therefore we have to use the /browse handler and turn of velocity by forcing json as response writer.
     ->setHandler('browse')
     ->setResponseWriter(\Solarium\Core\Query\AbstractQuery::WT_JSON);

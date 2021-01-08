@@ -4,9 +4,9 @@ namespace Solarium\Tests\Integration;
 
 use Solarium\Exception\HttpException;
 
-abstract class AbstractServerTest extends AbstractTechproductsTest
+abstract class AbstractServerTest extends Abstracttech_productsTest
 {
-    protected static function createTechproducts(): void
+    protected static function createtech_products(): void
     {
         self::$config = [
             'endpoint' => [
@@ -23,7 +23,7 @@ abstract class AbstractServerTest extends AbstractTechproductsTest
 
         $coreAdminQuery = self::$client->createCoreAdmin();
 
-        // create core with unique name using the techproducts configset
+        // create core with unique name using the tech_products configset
         $createAction = $coreAdminQuery->createCreate();
         $createAction->setCore(self::$name)
             ->setConfigSet('solarium');
@@ -102,7 +102,7 @@ abstract class AbstractServerTest extends AbstractTechproductsTest
         // create core *_a
         $createAction = $coreAdminQuery->createCreate();
         $createAction->setCore(self::$name.'_a');
-        $createAction->setConfigSet('sample_techproducts_configs');
+        $createAction->setConfigSet('sample_tech_products_configs');
         $coreAdminQuery->setAction($createAction);
         $response = self::$client->coreAdmin($coreAdminQuery);
         $this->assertTrue($response->getWasSuccessful());
@@ -110,7 +110,7 @@ abstract class AbstractServerTest extends AbstractTechproductsTest
         // create core *_b
         $createAction = $coreAdminQuery->createCreate();
         $createAction->setCore(self::$name.'_b');
-        $createAction->setConfigSet('sample_techproducts_configs');
+        $createAction->setConfigSet('sample_tech_products_configs');
         $coreAdminQuery->setAction($createAction);
         $response = self::$client->coreAdmin($coreAdminQuery);
         $this->assertTrue($response->getWasSuccessful());
@@ -178,10 +178,10 @@ abstract class AbstractServerTest extends AbstractTechproductsTest
     {
         $coreAdminQuery = self::$client->createCoreAdmin();
 
-        // create new core using the techproducts config set
+        // create new core using the tech_products config set
         $createAction = $coreAdminQuery->createCreate();
         $createAction->setCore(self::$name.'_new');
-        $createAction->setConfigSet('sample_techproducts_configs');
+        $createAction->setConfigSet('sample_tech_products_configs');
         $coreAdminQuery->setAction($createAction);
         $response = self::$client->coreAdmin($coreAdminQuery);
         $this->assertTrue($response->getWasSuccessful());

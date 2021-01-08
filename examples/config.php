@@ -7,7 +7,7 @@ $config = array(
             'host' => '127.0.0.1',
             'port' => 8983,
             'path' => '/',
-            'core' => 'techproducts',
+            'core' => 'tech_products',
         )
     )
 );

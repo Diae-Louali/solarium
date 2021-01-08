@@ -12,6 +12,9 @@ $query = $client->createSelect();
 // get the dismax component and set a boost query
 $edismax = $query->getEDisMax();
 
+//(by diae) boost the field relevancy score by x times (all wanted fields need to be defined here)
+$edismax->setQueryFields('features^20.0 cat^1.0');
+
 // this query is now a dismax query
 $query->setQuery('memory -printer');
 

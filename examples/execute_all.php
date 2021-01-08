@@ -28,20 +28,20 @@ try {
 
         $collectionsQuery = $client->createCollections();
 
-        // create core with unique name using the techproducts configset
+        // create core with unique name using the tech_products configset
         $createAction = $collectionsQuery->createCreate();
         $createAction->setName($collection_or_core_name)
-            ->setCollectionConfigName('techproducts')
+            ->setCollectionConfigName('tech_products')
             ->setNumShards(2);
         $collectionsQuery->setAction($createAction);
         $client->collections($collectionsQuery);
     } else {
         $coreAdminQuery = $client->createCoreAdmin();
 
-        // create core with unique name using the techproducts configset
+        // create core with unique name using the tech_products configset
         $createAction = $coreAdminQuery->createCreate();
         $createAction->setCore($collection_or_core_name)
-            ->setConfigSet('sample_techproducts_configs');
+            ->setConfigSet('sample_tech_products_configs');
         $coreAdminQuery->setAction($createAction);
         $response = $client->coreAdmin($coreAdminQuery);
     }
@@ -63,7 +63,7 @@ try {
     ]);
     $client->execute($query);
 
-    // index techproducts sample data
+    // index tech_products sample data
     $dataDir = __DIR__.
         DIRECTORY_SEPARATOR.'..'.
         DIRECTORY_SEPARATOR.'lucene-solr'.
@@ -98,7 +98,7 @@ try {
                 }
 
             } else {
-                print 'Could not be run against the techproducts example.';
+                print 'Could not be run against the tech_products example.';
             }
         }
     }

@@ -7,9 +7,9 @@ use Solarium\Core\Client\State\ClusterState;
 /**
  * Abstract base class.
  */
-abstract class AbstractCloudTest extends AbstractTechproductsTest
+abstract class AbstractCloudTest extends Abstracttech_productsTest
 {
-    protected static function createTechproducts(): void
+    protected static function createtech_products(): void
     {
         self::$config = [
             'endpoint' => [
@@ -26,10 +26,10 @@ abstract class AbstractCloudTest extends AbstractTechproductsTest
 
         $collectionsQuery = self::$client->createCollections();
 
-        // create core with unique name using the techproducts configset
+        // create core with unique name using the tech_products configset
         $createAction = $collectionsQuery->createCreate();
         $createAction->setName(self::$name)
-            ->setCollectionConfigName('techproducts')
+            ->setCollectionConfigName('tech_products')
             ->setNumShards(2);
         $collectionsQuery->setAction($createAction);
         $response = self::$client->collections($collectionsQuery);

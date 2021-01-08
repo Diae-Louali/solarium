@@ -17,6 +17,7 @@ if ($_POST) {
     $doc = $update->createDocument();
     $doc->id = $_POST['id'];
     $doc->name = $_POST['name'];
+    $doc->manu = $_POST['manu'];
     $doc->price = $_POST['price'];
 
     // add the document and a commit command to the update query
@@ -37,6 +38,7 @@ if ($_POST) {
     <form method="POST">
         Id: <input type="text" name="id"/> <br/>
         Name: <input type="text" name="name"/> <br/>
+        manu: <input type="text" name="manu"/> <br/>
         Price: <input type="text" name="price"/> <br/>
         <input type="submit" value="Add"/>
     </form>
